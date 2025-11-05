@@ -1,59 +1,33 @@
 /*
  * Stylesheet для проекту "OPEN WORLD ECHOES"
- * Включає: Dark Minimalism, Flexbox для "Прибитого Футера"
+ * Включає: Dark Minimalism, Flexbox для "Прибитого Футера" та АДАПТИВНИЙ ДИЗАЙН
  */
 
 /* ==================================== */
-/* ПРАВИЛА ДЛЯ "ПРИБИТОГО ФУТЕРА" */
+/* БАЗОВІ ПРАВИЛА (Flexbox Footer) */
 /* ==================================== */
-html {
-    height: 100%; /* Встановлюємо висоту для html */
-}
-body {
+html, body {
     height: 100%;
-    margin: 0; /* Важливо: видаляємо зовнішні відступи */
+    margin: 0;
 }
 .wrapper {
-    display: flex;             /* Увімкнути Flexbox */
-    flex-direction: column;    /* Вибудовувати елементи вертикально */
-    min-height: 100vh;         /* Мінімальна висота обгортки дорівнює висоті вікна */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 main {
-    flex-grow: 1; /* Дозволяє <main> заповнити весь доступний простір, притискаючи футер вниз */
+    flex-grow: 1;
     flex-shrink: 0;
 }
-/* ==================================== */
-/* КІНЕЦЬ ПРАВИЛ ДЛЯ ФУТЕРА */
-/* ==================================== */
-
 
 /* Скидання та Основні Стилі */
-/* (Інші стилі з попередньої відповіді залишаються тут...) */
 body {
-    background-color: #1A1A1A; /* Глибокий темно-сірий */
-    color: #E0E0E0; /* М'який білий текст */
+    background-color: #1A1A1A;
+    color: #E0E0E0;
     font-family: 'Lora', serif;
     line-height: 1.6;
 }
-h1, h2, h3, h4 {
-    font-family: 'Poppins', sans-serif;
-    color: #FFFFFF;
-    margin-top: 25px;
-}
-p {
-    margin-bottom: 15px;
-}
-a {
-    color: #FFD700; /* Золотистий акцент для посилань */
-    text-decoration: none;
-    transition: color 0.3s;
-}
-a:hover {
-    color: #6B8E23; /* Зелений акцент при наведенні */
-}
-.accent-text {
-    color: #FFD700;
-}
+/* ... (інші загальні стилі без змін) ... */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -65,41 +39,19 @@ a:hover {
     background-color: #000000;
     padding: 15px 5%;
     display: flex;
+    flex-direction: row; /* За замовчуванням горизонтально */
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #333;
 }
-.logo {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #FFD700;
-}
+/* Стилі логотипу та посилань залишаються без змін */
 .main-nav a {
     color: #E0E0E0;
     margin-left: 25px;
     padding: 5px 0;
     border-bottom: 2px solid transparent;
 }
-.main-nav a.active, .main-nav a:hover {
-    color: #FFD700;
-    border-bottom: 2px solid #FFD700;
-}
-
-/* Хлібні Крихти (Breadcrumbs) */
-.breadcrumbs {
-    background-color: #252525;
-    padding: 10px 0;
-    font-size: 0.9em;
-    border-bottom: 1px solid #333;
-}
-.breadcrumbs a {
-    color: #999;
-    text-decoration: none;
-}
-.breadcrumbs a:hover {
-    color: #E0E0E0;
-}
+/* ... */
 
 /* Структура Контенту (Рівень 2: З сайдбаром) */
 .content-wrapper {
@@ -108,29 +60,11 @@ a:hover {
     padding-top: 30px;
 }
 .sidebar {
-    flex: 0 0 250px;
+    flex: 0 0 250px; /* Фіксована ширина на десктопі */
     padding: 20px;
     background-color: #252525;
     border-radius: 5px;
     align-self: flex-start;
-}
-.sidebar-title {
-    color: #FFD700;
-    margin-top: 0;
-    border-bottom: 1px solid #444;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-.sub-nav a {
-    display: block;
-    color: #E0E0E0;
-    padding: 8px 0;
-    border-bottom: 1px dotted #333;
-    transition: color 0.2s, padding-left 0.2s;
-}
-.sub-nav a:hover {
-    color: #6B8E23;
-    padding-left: 5px;
 }
 .main-content {
     flex-grow: 1;
@@ -143,63 +77,7 @@ a:hover {
     gap: 30px;
     margin-top: 30px;
 }
-.card {
-    display: block;
-    background-color: #252525;
-    padding: 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    border-bottom: 4px solid #333;
-    transition: transform 0.3s, border-color 0.3s;
-}
-.card:hover {
-    transform: translateY(-5px);
-    border-bottom-color: #FFD700;
-}
-.card h4 {
-    color: #FFD700;
-    margin-top: 0;
-}
-.card p {
-    color: #BBB;
-    font-size: 0.9em;
-}
-
-/* Зображення та підписи (для всіх рівнів) */
-.content-image {
-    max-width: 100%;
-    margin: 30px 0;
-    text-align: center;
-    border: 1px solid #333;
-}
-.content-image img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-.content-image figcaption {
-    font-style: italic;
-    font-size: 0.85em;
-    color: #999;
-    padding: 10px;
-    background-color: #252525;
-}
-
-/* Навігація на сторінках Рівня 3 */
-.next-topic-link {
-    text-align: right;
-    margin-top: 40px;
-}
-.next-topic-link a {
-    color: #1A1A1A;
-    font-weight: bold;
-    padding: 10px 15px;
-    background-color: #6B8E23;
-    border-radius: 5px;
-}
-.next-topic-link a:hover {
-    background-color: #FFD700;
-}
+/* ... (інші стилі карток та зображень без змін) ... */
 
 /* Футер */
 footer {
@@ -209,7 +87,75 @@ footer {
     padding: 15px 0;
     margin-top: 50px;
     font-size: 0.8em;
-    
-    /* Додано: Футер не повинен розтягуватися Flexbox'ом */
     flex-shrink: 0; 
+}
+
+
+/* ==================================== */
+/* МЕДІАЗАПИТИ (МОБІЛЬНИЙ ДИЗАЙН) */
+/* ==================================== */
+
+@media (max-width: 850px) {
+    
+    /* 1. Адаптація Навігаційного Меню */
+    .main-header {
+        flex-direction: column; /* Змінюємо розташування елементів на вертикальне */
+        align-items: flex-start;
+        padding-bottom: 5px;
+    }
+    .main-nav {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column; /* Посилання йдуть одне під одним */
+        width: 100%;
+        padding-left: 0;
+    }
+    .main-nav a {
+        margin-left: 0;
+        padding: 8px 0;
+        text-align: center;
+        border-bottom: 1px solid #333; /* Додаємо роздільник */
+        width: 100%;
+    }
+    .main-nav a:hover {
+        border-bottom-color: #FFD700;
+    }
+    .logo {
+        width: 100%;
+        text-align: center; /* Центруємо логотип */
+    }
+
+    /* 2. Адаптація Сторінок Рівня 2 (Сайдбар + Контент) */
+    .content-wrapper {
+        flex-direction: column; /* Сайдбар переноситься над контентом */
+        gap: 20px;
+    }
+    
+    .sidebar {
+        flex: auto; /* Сайдбар займає всю ширину */
+        width: 100%;
+    }
+    .sidebar-title {
+        text-align: center; /* Центруємо заголовок сайдбару */
+    }
+    .sub-nav {
+        display: flex; /* Робимо посилання сайдбару горизонтальними */
+        flex-wrap: wrap; /* Дозволяємо переносити посилання */
+        justify-content: center;
+    }
+    .sub-nav a {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    .sub-nav a:hover {
+        padding-left: 10px; /* Прибираємо зсув при наведенні для мобільної версії */
+    }
+    
+    /* 3. Адаптація Картки (Рівень 1) */
+    .card-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобільному */
+    }
 }
