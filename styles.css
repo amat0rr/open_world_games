@@ -1,12 +1,15 @@
 /*
  * Stylesheet для проекту "OPEN WORLD ECHOES"
- * Включає: Dark Minimalism, Flexbox для "Прибитого Футера" та АДАПТИВНИЙ ДИЗАЙН
+ * Включає: Dark Minimalism, Flexbox Footer та ПРАВИЛЬНУ АДАПТИВНІСТЬ
  */
 
 /* ==================================== */
-/* БАЗОВІ ПРАВИЛА (Flexbox Footer) */
+/* БАЗОВІ ПРАВИЛА (Flexbox Footer та Розмір) */
 /* ==================================== */
-html, body {
+html {
+    height: 100%;
+}
+body {
     height: 100%;
     margin: 0;
 }
@@ -21,12 +24,6 @@ main {
 }
 
 /* Скидання та Основні Стилі */
-body {
-    background-color: #1A1A1A;
-    color: #E0E0E0;
-    font-family: 'Lora', serif;
-    line-height: 1.6;
-}
 /* ... (інші загальні стилі без змін) ... */
 .container {
     max-width: 1200px;
@@ -34,36 +31,48 @@ body {
     padding: 20px;
 }
 
+/* ==================================== */
+/* ДЕСКТОПНИЙ ВИГЛЯД (ЗАВЖДИ КОРЕКТНИЙ) */
+/* ==================================== */
+
 /* Навігація та Шапка (Header) */
 .main-header {
     background-color: #000000;
     padding: 15px 5%;
     display: flex;
-    flex-direction: row; /* За замовчуванням горизонтально */
+    /* На десктопі завжди горизонтальне вирівнювання: */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #333;
 }
-/* Стилі логотипу та посилань залишаються без змін */
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #FFD700;
+    width: auto; /* Додано: Логотип займає лише потрібну ширину */
+}
+.main-nav {
+    display: flex; /* Додано: На десктопі посилання завжди в рядок */
+    flex-direction: row;
+    padding-left: 0; /* Виправлення можливих відступів */
+}
 .main-nav a {
-    color: #E0E0E0;
     margin-left: 25px;
     padding: 5px 0;
-    border-bottom: 2px solid transparent;
 }
-/* ... */
 
 /* Структура Контенту (Рівень 2: З сайдбаром) */
 .content-wrapper {
     display: flex;
+    flex-direction: row; /* Додано: На десктопі сайдбар і контент завжди в рядку */
     gap: 40px;
     padding-top: 30px;
 }
 .sidebar {
-    flex: 0 0 250px; /* Фіксована ширина на десктопі */
-    padding: 20px;
-    background-color: #252525;
-    border-radius: 5px;
+    flex: 0 0 250px;
+    width: 250px; /* Фіксована ширина на десктопі */
     align-self: flex-start;
 }
 .main-content {
@@ -75,21 +84,9 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 30px;
-}
-/* ... (інші стилі карток та зображень без змін) ... */
-
-/* Футер */
-footer {
-    background-color: #000000;
-    color: #666;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 50px;
-    font-size: 0.8em;
-    flex-shrink: 0; 
 }
 
+/* ... (інші загальні стилі) ... */
 
 /* ==================================== */
 /* МЕДІАЗАПИТИ (МОБІЛЬНИЙ ДИЗАЙН) */
@@ -99,30 +96,25 @@ footer {
     
     /* 1. Адаптація Навігаційного Меню */
     .main-header {
-        flex-direction: column; /* Змінюємо розташування елементів на вертикальне */
+        flex-direction: column; /* Вертикально */
         align-items: flex-start;
         padding-bottom: 5px;
-    }
-    .main-nav {
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column; /* Посилання йдуть одне під одним */
-        width: 100%;
-        padding-left: 0;
-    }
-    .main-nav a {
-        margin-left: 0;
-        padding: 8px 0;
-        text-align: center;
-        border-bottom: 1px solid #333; /* Додаємо роздільник */
-        width: 100%;
-    }
-    .main-nav a:hover {
-        border-bottom-color: #FFD700;
     }
     .logo {
         width: 100%;
         text-align: center; /* Центруємо логотип */
+        margin-bottom: 10px;
+    }
+    .main-nav {
+        margin-top: 10px;
+        flex-direction: column; /* Посилання одне під одним */
+        width: 100%;
+    }
+    .main-nav a {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid #333;
     }
 
     /* 2. Адаптація Сторінок Рівня 2 (Сайдбар + Контент) */
@@ -132,15 +124,12 @@ footer {
     }
     
     .sidebar {
-        flex: auto; /* Сайдбар займає всю ширину */
-        width: 100%;
-    }
-    .sidebar-title {
-        text-align: center; /* Центруємо заголовок сайдбару */
+        width: auto; /* Дозволяємо сайдбару займати всю ширину */
+        flex: auto;
     }
     .sub-nav {
-        display: flex; /* Робимо посилання сайдбару горизонтальними */
-        flex-wrap: wrap; /* Дозволяємо переносити посилання */
+        display: flex; 
+        flex-wrap: wrap;
         justify-content: center;
     }
     .sub-nav a {
@@ -151,7 +140,7 @@ footer {
         margin: 5px;
     }
     .sub-nav a:hover {
-        padding-left: 10px; /* Прибираємо зсув при наведенні для мобільної версії */
+        padding-left: 10px;
     }
     
     /* 3. Адаптація Картки (Рівень 1) */
